@@ -16,6 +16,8 @@ struct ModalConfiguration {
     
     /// 弹出的方向, 默认`.bottom`从底部弹出
     var direction: ModalDirection = .bottom
+    /// 动画时长, 默认`0.5s`
+    var animationDuration: TimeInterval = 0.5
     /// 点击模态窗口之外的区域是否关闭模态窗口
     var isDismissModal: Bool = true
     /// 背景透明度, 0.0~1.0, 默认`0.3`
@@ -53,6 +55,9 @@ struct ModalConfiguration {
     
 }
 
+
+/// runtime key
+private var key: Void?
 
 // MARK: -
 extension UIViewController {
@@ -108,11 +113,6 @@ extension UIViewController {
 
 // MARK: *** Private ***
 
-/// 动画执行时长
-private let modalAnimationDuration: CFTimeInterval = 0.5
-/// runtime key
-private var key: Void?
-
 // MARK: -
 private class ModalTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
     
@@ -152,7 +152,7 @@ private class ModalAnimatedTransitioning: NSObject, UIViewControllerAnimatedTran
     
     /// 返回动画之行时长
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return modalAnimationDuration
+        return configuration.animationDuration
     }
     
     /// 执行动画
@@ -348,7 +348,7 @@ private class ModalPresentationController: UIPresentationController {
         
         let animation1 = CABasicAnimation(keyPath: "transform")
         animation1.toValue = NSValue(caTransform3D: t1)
-        animation1.duration = modalAnimationDuration / 2
+        animation1.duration = configuration.animationDuration / 2
         animation1.fillMode = kCAFillModeForwards
         animation1.isRemovedOnCompletion = false
         animation1.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
@@ -363,7 +363,7 @@ private class ModalPresentationController: UIPresentationController {
         let group = CAAnimationGroup()
         group.fillMode = kCAFillModeForwards
         group.isRemovedOnCompletion = false
-        group.duration = modalAnimationDuration
+        group.duration = configuration.animationDuration
         group.animations = [animation1, animation2]
         return group
     }
