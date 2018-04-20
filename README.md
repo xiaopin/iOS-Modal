@@ -14,6 +14,12 @@ iOS 模态窗口，内置类似淘宝添加购物车的模态视图动画，内�
 
 - 提供Objective-C版本
 
+## 特性
+
+- 丰富的配置，适应多种使用场景
+- 支持交互式转场动画（当启动背景动画时，建议关闭该功能）
+- 简单易用的API，使用者只需关心 UIViewController 通过 extension 所提供的方法
+
 
 ## 环境要求
 
@@ -60,6 +66,7 @@ presentModalView(view, contentSize: CGSize(width: 200.0, height: 300.0), configu
 
 - [KNSemiModalViewController](https://github.com/kentnguyen/KNSemiModalViewController)
 - [SemiModal](https://github.com/xiaopin/SemiModal.git)
+- [Custom View Controller Presentations and Transitions](https://developer.apple.com/library/content/samplecode/CustomTransitions/Introduction/Intro.html#//apple_ref/doc/uid/TP40015158)
 
 感谢他们对开源社区做出的贡献。
 

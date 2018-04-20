@@ -12,7 +12,7 @@ import UIKit
 // MARK: *** Public ***
 
 /// 弹窗配置
-struct ModalConfiguration {
+class ModalConfiguration {
     
     /// 弹出的方向, 默认`.bottom`从底部弹出
     var direction: ModalDirection = .bottom
@@ -35,11 +35,16 @@ struct ModalConfiguration {
     var shadowRadius: CGFloat = 5.0
     
     /// 是否启用背景动画
-    var isEnableBackgroundAnimation = true
+    var isEnableBackgroundAnimation = false
     /// 背景颜色(需要设置`isEnableBackgroundAnimation`为true)
     var backgroundColor = UIColor.black
     /// 背景图片(需要设置`isEnableBackgroundAnimation`为true)
     var backgroundImage: UIImage?
+    
+    /// 是否启用交互式转场动画(当direction == .center时无效)
+    var isEnableInteractiveTransitioning: Bool = true
+    /// 交互手势
+    fileprivate var panGestureRecognizer: UIPanGestureRecognizer?
     
     /// 默认配置
     static var `default`: ModalConfiguration {
@@ -123,8 +128,7 @@ private class ModalTransitioningDelegate: NSObject, UIViewControllerTransitionin
     }
     
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        let presentationController = ModalPresentationController(presentedViewController: presented, presenting: presenting)
-        presentationController.configuration = configuration
+        let presentationController = ModalPresentationController(presentedViewController: presented, presenting: presenting, configuration: configuration)
         return presentationController
     }
     
@@ -134,6 +138,99 @@ private class ModalTransitioningDelegate: NSObject, UIViewControllerTransitionin
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return ModalAnimatedTransitioning(configuration: configuration, isPresentation: false)
+    }
+    
+    func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return nil
+    }
+    
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        if configuration.isEnableInteractiveTransitioning {
+            return ModalPercentDrivenInteractiveTransition(configuration: configuration)
+        }
+        return nil
+    }
+    
+}
+
+
+// MARK: -
+private class ModalPercentDrivenInteractiveTransition: UIPercentDrivenInteractiveTransition {
+    
+    private let configuration: ModalConfiguration
+    private var transitionContext: UIViewControllerContextTransitioning?
+    private var beganTouchPoint: CGPoint?
+    
+    init(configuration: ModalConfiguration) {
+        self.configuration = configuration
+        super.init()
+        guard let panGestureRecognizer = configuration.panGestureRecognizer else { return }
+        panGestureRecognizer.addTarget(self, action: #selector(gestureRecognizeDidUpdate(_:)))
+    }
+    
+    override func startInteractiveTransition(_ transitionContext: UIViewControllerContextTransitioning) {
+        self.transitionContext = transitionContext
+        super.startInteractiveTransition(transitionContext)
+    }
+    
+    @objc private func gestureRecognizeDidUpdate(_ sender: UIPanGestureRecognizer) {
+        switch sender.state {
+        case .began:
+            // 开始状态由`ModalPresentationController`进行处理,不会走到这里
+            break
+        case .changed:
+            if nil == beganTouchPoint {
+                guard let transitionContext = transitionContext else { return }
+                let transitionContainerView = transitionContext.containerView
+                beganTouchPoint = sender.location(in: transitionContainerView)
+            }
+            update(percentForGesture(sender))
+        case .ended:
+            (percentForGesture(sender) > 0.3) ? finish() : cancel()
+            beganTouchPoint = nil
+        default:
+            beganTouchPoint = nil
+            cancel()
+        }
+    }
+    
+    private func percentForGesture(_ sender: UIPanGestureRecognizer) -> CGFloat {
+        guard
+            let transitionContext = transitionContext,
+            let beganTouchPoint = beganTouchPoint,
+            let modalView = transitionContext.viewController(forKey: .from)?.view
+        else { return 0.0 }
+        
+        let transitionContainerView = transitionContext.containerView
+        let currentPoint = sender.location(in: transitionContainerView)
+        let width = modalView.bounds.width
+        let height = modalView.bounds.height
+        
+        switch configuration.direction {
+        case .top:
+            if currentPoint.y < beganTouchPoint.y {
+                let offset = beganTouchPoint.y - currentPoint.y
+                return offset / height
+            }
+        case .right:
+            if currentPoint.x > beganTouchPoint.x {
+                let offset = currentPoint.x - beganTouchPoint.x
+                return offset / width
+            }
+        case .bottom:
+            if currentPoint.y > beganTouchPoint.y {
+                let offset = currentPoint.y - beganTouchPoint.y
+                return offset / height
+            }
+        case .left:
+            if currentPoint.x < beganTouchPoint.x {
+                let offset = beganTouchPoint.x - currentPoint.x
+                return offset / width
+            }
+        case .center: // None, Not supoort
+            break
+        }
+        return 0.0
     }
     
 }
@@ -199,10 +296,11 @@ private class ModalAnimatedTransitioning: NSObject, UIViewControllerAnimatedTran
                 animatingVC.view.alpha = self.isPresentation ? 1.0 : 0.0
             }
         }) { (_) in
-            if !self.isPresentation {
+            let wasCancelled = transitionContext.transitionWasCancelled
+            if !self.isPresentation && !wasCancelled {
                 fromView?.removeFromSuperview()
             }
-            transitionContext.completeTransition(true)
+            transitionContext.completeTransition(!wasCancelled)
         }
     }
     
@@ -212,16 +310,26 @@ private class ModalAnimatedTransitioning: NSObject, UIViewControllerAnimatedTran
 // MARK: -
 private class ModalPresentationController: UIPresentationController {
     
-    var configuration = ModalConfiguration.default
+    private let configuration: ModalConfiguration
     private var animatingView: UIView?
     private let backgroundView = UIImageView()
     private let dimmingView = UIView()
+    /// 是否正在交互
+    private var isInteractiving: Bool = false
     
-    override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
+    init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, configuration: ModalConfiguration) {
+        self.configuration = configuration
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapGestureRecognizerAction(_:)))
         dimmingView.addGestureRecognizer(tap)
+        
+        if configuration.isEnableInteractiveTransitioning && configuration.direction != .center {
+            let panGestureRecognizer = UIPanGestureRecognizer(target: nil, action: nil)
+            dimmingView.addGestureRecognizer(panGestureRecognizer)
+            self.configuration.panGestureRecognizer = panGestureRecognizer
+            panGestureRecognizer.addTarget(self, action: #selector(gestureRecognizeDidUpdate(_:)))
+        }
     }
     
     /// 返回模态窗口的frame
@@ -316,6 +424,7 @@ private class ModalPresentationController: UIPresentationController {
     
     override func dismissalTransitionWillBegin() {
         super.dismissalTransitionWillBegin()
+        if configuration.isEnableInteractiveTransitioning && isInteractiving { return }
         presentedViewController.transitionCoordinator?.animate(alongsideTransition: { (_) in
             self.dimmingView.alpha = 0.0
             if self.configuration.isEnableBackgroundAnimation {
@@ -328,6 +437,18 @@ private class ModalPresentationController: UIPresentationController {
     @objc private func tapGestureRecognizerAction(_ sender: UITapGestureRecognizer) {
         if configuration.isDismissModal {
             presentedViewController.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    @objc private func gestureRecognizeDidUpdate(_ sender: UIPanGestureRecognizer) {
+        switch sender.state {
+        case .began:
+            isInteractiving = true
+            presentedViewController.dismiss(animated: true, completion: nil)
+        case .changed:
+            break
+        default:
+            isInteractiving = false
         }
     }
     
