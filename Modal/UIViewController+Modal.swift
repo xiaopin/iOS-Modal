@@ -323,13 +323,6 @@ private class ModalPresentationController: UIPresentationController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapGestureRecognizerAction(_:)))
         dimmingView.addGestureRecognizer(tap)
-        
-        if configuration.isEnableInteractiveTransitioning && configuration.direction != .center {
-            let panGestureRecognizer = UIPanGestureRecognizer(target: nil, action: nil)
-            dimmingView.addGestureRecognizer(panGestureRecognizer)
-            self.configuration.panGestureRecognizer = panGestureRecognizer
-            panGestureRecognizer.addTarget(self, action: #selector(gestureRecognizeDidUpdate(_:)))
-        }
     }
     
     /// 返回模态窗口的frame
@@ -406,6 +399,14 @@ private class ModalPresentationController: UIPresentationController {
             presentedView?.layer.shadowOpacity = configuration.shadowOpacity
             presentedView?.layer.shouldRasterize = true
             presentedView?.layer.rasterizationScale = UIScreen.main.scale
+        }
+        
+        // 启用手势交互功能,添加交互手势
+        if configuration.isEnableInteractiveTransitioning && configuration.direction != .center {
+            let panGestureRecognizer = UIPanGestureRecognizer(target: nil, action: nil)
+            containerView?.addGestureRecognizer(panGestureRecognizer)
+            self.configuration.panGestureRecognizer = panGestureRecognizer
+            panGestureRecognizer.addTarget(self, action: #selector(gestureRecognizeDidUpdate(_:)))
         }
         
         dimmingView.backgroundColor = UIColor(white: 0.0, alpha: configuration.backgroundOpacity)
