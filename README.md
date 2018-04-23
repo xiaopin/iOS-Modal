@@ -2,7 +2,7 @@
 
 [![Build](https://img.shields.io/badge/build-passing-green.svg?style=flat)]()
 [![Platform](https://img.shields.io/badge/platform-iOS-brown.svg?style=flat)]()
-[![Language](https://img.shields.io/badge/language-swift-blue.svg?style=flat)]()
+[![Language](https://img.shields.io/badge/language-Swift%20&%20Objective%20C-blue.svg?style=flat)]()
 [![License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat)]()
 
 iOS 模态窗口，内置类似淘宝添加购物车的模态视图动画，内部使用 iOS8 推出的`UIPresentationController`来实现模态窗口功能。
@@ -12,7 +12,8 @@ iOS 模态窗口，内置类似淘宝添加购物车的模态视图动画，内�
 
 ## TODO
 
-- 提供Objective-C版本
+- 完善交互手势对滚动视图的支持
+- ~~提供Objective-C版本（已提供）~~
 
 ## 特性
 
@@ -24,13 +25,13 @@ iOS 模态窗口，内置类似淘宝添加购物车的模态视图动画，内�
 ## 环境要求
 
 - iOS8.0+
-- Swift4.0+
+- Swift4.0+ (Swift版本)
 - Xcode9.0+
 
 
 ## 用法
 
-- 将`UIViewController+Modal.swift`拖入你的项目即可
+- 将`UIViewController+Modal.swift`或`Modal-ObjC`文件夹拖入你的项目即可
 
 - 示例代码
 

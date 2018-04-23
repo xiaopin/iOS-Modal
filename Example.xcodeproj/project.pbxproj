@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12152904208D85720023E89F /* XPModalAnimatedTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 12152903208D85720023E89F /* XPModalAnimatedTransitioning.m */; };
+		12152907208D866F0023E89F /* XPModalTransitioningDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 12152906208D866F0023E89F /* XPModalTransitioningDelegate.m */; };
+		1215290A208D86A60023E89F /* XPModalPercentDrivenInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 12152909208D86A60023E89F /* XPModalPercentDrivenInteractiveTransition.m */; };
+		1215290D208D86BA0023E89F /* XPModalPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1215290C208D86BA0023E89F /* XPModalPresentationController.m */; };
+		12152910208D8A0A0023E89F /* XPModalConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 1215290F208D8A090023E89F /* XPModalConfiguration.m */; };
+		12268933208D7A9900249A08 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 12268932208D7A9900249A08 /* AppDelegate.m */; };
+		12268936208D7A9900249A08 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12268935208D7A9900249A08 /* ViewController.m */; };
+		12268939208D7A9900249A08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12268937208D7A9900249A08 /* Main.storyboard */; };
+		1226893B208D7AA200249A08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1226893A208D7AA200249A08 /* Assets.xcassets */; };
+		1226893E208D7AA200249A08 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1226893C208D7AA200249A08 /* LaunchScreen.storyboard */; };
+		12268941208D7AA200249A08 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 12268940208D7AA200249A08 /* main.m */; };
+		12268948208D7B5300249A08 /* UIViewController+XPModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 12268947208D7B5300249A08 /* UIViewController+XPModal.m */; };
 		12E4C1902087172600BB98D4 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E4C18F2087172600BB98D4 /* ModalViewController.swift */; };
 		12FBAA612086F7E300605304 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FBAA602086F7E300605304 /* AppDelegate.swift */; };
 		12FBAA632086F7E300605304 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FBAA622086F7E300605304 /* ViewController.swift */; };
@@ -17,6 +29,28 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		12152902208D85720023E89F /* XPModalAnimatedTransitioning.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XPModalAnimatedTransitioning.h; sourceTree = "<group>"; };
+		12152903208D85720023E89F /* XPModalAnimatedTransitioning.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XPModalAnimatedTransitioning.m; sourceTree = "<group>"; };
+		12152905208D866F0023E89F /* XPModalTransitioningDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XPModalTransitioningDelegate.h; sourceTree = "<group>"; };
+		12152906208D866F0023E89F /* XPModalTransitioningDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XPModalTransitioningDelegate.m; sourceTree = "<group>"; };
+		12152908208D86A60023E89F /* XPModalPercentDrivenInteractiveTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XPModalPercentDrivenInteractiveTransition.h; sourceTree = "<group>"; };
+		12152909208D86A60023E89F /* XPModalPercentDrivenInteractiveTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XPModalPercentDrivenInteractiveTransition.m; sourceTree = "<group>"; };
+		1215290B208D86BA0023E89F /* XPModalPresentationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XPModalPresentationController.h; sourceTree = "<group>"; };
+		1215290C208D86BA0023E89F /* XPModalPresentationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XPModalPresentationController.m; sourceTree = "<group>"; };
+		1215290E208D8A090023E89F /* XPModalConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XPModalConfiguration.h; sourceTree = "<group>"; };
+		1215290F208D8A090023E89F /* XPModalConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XPModalConfiguration.m; sourceTree = "<group>"; };
+		1226892F208D7A9900249A08 /* ExampleObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExampleObjC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		12268931208D7A9900249A08 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		12268932208D7A9900249A08 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		12268934208D7A9900249A08 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		12268935208D7A9900249A08 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		12268938208D7A9900249A08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1226893A208D7AA200249A08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1226893D208D7AA200249A08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1226893F208D7AA200249A08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		12268940208D7AA200249A08 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		12268946208D7B5300249A08 /* UIViewController+XPModal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+XPModal.h"; sourceTree = "<group>"; };
+		12268947208D7B5300249A08 /* UIViewController+XPModal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+XPModal.m"; sourceTree = "<group>"; };
 		12E4C18F2087172600BB98D4 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		12FBAA5D2086F7E300605304 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12FBAA602086F7E300605304 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -29,6 +63,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1226892C208D7A9900249A08 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		12FBAA5A2086F7E300605304 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -39,10 +80,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		12268930208D7A9900249A08 /* ExampleObjC */ = {
+			isa = PBXGroup;
+			children = (
+				12268945208D7AB700249A08 /* Modal-ObjC */,
+				12268931208D7A9900249A08 /* AppDelegate.h */,
+				12268932208D7A9900249A08 /* AppDelegate.m */,
+				12268934208D7A9900249A08 /* ViewController.h */,
+				12268935208D7A9900249A08 /* ViewController.m */,
+				12268937208D7A9900249A08 /* Main.storyboard */,
+				1226893A208D7AA200249A08 /* Assets.xcassets */,
+				1226893C208D7AA200249A08 /* LaunchScreen.storyboard */,
+				1226893F208D7AA200249A08 /* Info.plist */,
+				12268940208D7AA200249A08 /* main.m */,
+			);
+			path = ExampleObjC;
+			sourceTree = "<group>";
+		};
+		12268945208D7AB700249A08 /* Modal-ObjC */ = {
+			isa = PBXGroup;
+			children = (
+				12268946208D7B5300249A08 /* UIViewController+XPModal.h */,
+				12268947208D7B5300249A08 /* UIViewController+XPModal.m */,
+				1215290E208D8A090023E89F /* XPModalConfiguration.h */,
+				1215290F208D8A090023E89F /* XPModalConfiguration.m */,
+				12152902208D85720023E89F /* XPModalAnimatedTransitioning.h */,
+				12152903208D85720023E89F /* XPModalAnimatedTransitioning.m */,
+				12152908208D86A60023E89F /* XPModalPercentDrivenInteractiveTransition.h */,
+				12152909208D86A60023E89F /* XPModalPercentDrivenInteractiveTransition.m */,
+				1215290B208D86BA0023E89F /* XPModalPresentationController.h */,
+				1215290C208D86BA0023E89F /* XPModalPresentationController.m */,
+				12152905208D866F0023E89F /* XPModalTransitioningDelegate.h */,
+				12152906208D866F0023E89F /* XPModalTransitioningDelegate.m */,
+			);
+			path = "Modal-ObjC";
+			sourceTree = "<group>";
+		};
 		12FBAA542086F7E300605304 = {
 			isa = PBXGroup;
 			children = (
 				12FBAA5F2086F7E300605304 /* Example */,
+				12268930208D7A9900249A08 /* ExampleObjC */,
 				12FBAA5E2086F7E300605304 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -51,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				12FBAA5D2086F7E300605304 /* Example.app */,
+				1226892F208D7A9900249A08 /* ExampleObjC.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -81,6 +160,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1226892E208D7A9900249A08 /* ExampleObjC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 12268942208D7AA200249A08 /* Build configuration list for PBXNativeTarget "ExampleObjC" */;
+			buildPhases = (
+				1226892B208D7A9900249A08 /* Sources */,
+				1226892C208D7A9900249A08 /* Frameworks */,
+				1226892D208D7A9900249A08 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ExampleObjC;
+			productName = ExampleObjC;
+			productReference = 1226892F208D7A9900249A08 /* ExampleObjC.app */;
+			productType = "com.apple.product-type.application";
+		};
 		12FBAA5C2086F7E300605304 /* Example */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 12FBAA6F2086F7E300605304 /* Build configuration list for PBXNativeTarget "Example" */;
@@ -104,9 +200,14 @@
 		12FBAA552086F7E300605304 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = "";
 				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0920;
 				TargetAttributes = {
+					1226892E208D7A9900249A08 = {
+						CreatedOnToolsVersion = 9.3;
+						ProvisioningStyle = Automatic;
+					};
 					12FBAA5C2086F7E300605304 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -127,11 +228,22 @@
 			projectRoot = "";
 			targets = (
 				12FBAA5C2086F7E300605304 /* Example */,
+				1226892E208D7A9900249A08 /* ExampleObjC */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1226892D208D7A9900249A08 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1226893E208D7AA200249A08 /* LaunchScreen.storyboard in Resources */,
+				1226893B208D7AA200249A08 /* Assets.xcassets in Resources */,
+				12268939208D7A9900249A08 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		12FBAA5B2086F7E300605304 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -145,6 +257,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1226892B208D7A9900249A08 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12152910208D8A0A0023E89F /* XPModalConfiguration.m in Sources */,
+				12268936208D7A9900249A08 /* ViewController.m in Sources */,
+				12268941208D7AA200249A08 /* main.m in Sources */,
+				12268948208D7B5300249A08 /* UIViewController+XPModal.m in Sources */,
+				12268933208D7A9900249A08 /* AppDelegate.m in Sources */,
+				12152907208D866F0023E89F /* XPModalTransitioningDelegate.m in Sources */,
+				12152904208D85720023E89F /* XPModalAnimatedTransitioning.m in Sources */,
+				1215290A208D86A60023E89F /* XPModalPercentDrivenInteractiveTransition.m in Sources */,
+				1215290D208D86BA0023E89F /* XPModalPresentationController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		12FBAA592086F7E300605304 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -159,6 +287,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		12268937208D7A9900249A08 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				12268938208D7A9900249A08 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1226893C208D7AA200249A08 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1226893D208D7AA200249A08 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		12FBAA642086F7E300605304 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -178,6 +322,40 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		12268943208D7AA200249A08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ExampleObjC/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.0daybug.ExampleObjC;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		12268944208D7AA200249A08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ExampleObjC/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.0daybug.ExampleObjC;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		12FBAA6D2086F7E300605304 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -318,6 +496,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		12268942208D7AA200249A08 /* Build configuration list for PBXNativeTarget "ExampleObjC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12268943208D7AA200249A08 /* Debug */,
+				12268944208D7AA200249A08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		12FBAA582086F7E300605304 /* Build configuration list for PBXProject "Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
