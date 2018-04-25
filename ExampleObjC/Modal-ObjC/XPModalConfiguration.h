@@ -52,6 +52,12 @@ typedef NS_ENUM(NSInteger, XPModalDirection) {
 
 /// 交互手势(内部维护该手势,请忽略该属性)
 @property (nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
+/**
+ 标记交互手势是否已经开始了(仅限内部使用, Internal use only)
+ 
+ Fix: iOS9.x and iOS10.x tap gesture is failure.
+ */
+@property (nonatomic, assign, getter=isStartedInteractiveTransitioning) BOOL startedInteractiveTransitioning;
 
 
 /// 默认配置

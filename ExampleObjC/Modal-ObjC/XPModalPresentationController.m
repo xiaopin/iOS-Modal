@@ -169,6 +169,7 @@
     switch (sender.state) {
         case UIGestureRecognizerStateBegan:
             _interactiving = YES;
+            _configuration.startedInteractiveTransitioning = YES;
             [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
             break;
         case UIGestureRecognizerStateChanged:
@@ -176,6 +177,7 @@
             break;
         default:
             _interactiving = NO;
+            _configuration.startedInteractiveTransitioning = NO;
             break;
     }
 }

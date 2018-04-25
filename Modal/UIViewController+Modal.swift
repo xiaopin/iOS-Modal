@@ -43,6 +43,9 @@ class ModalConfiguration {
     
     /// 是否启用交互式转场动画(当direction == .center时无效)
     var isEnableInteractiveTransitioning: Bool = true
+    /// 标记交互式是否已经开始
+    /// Fix: iOS9.x and iOS10.x tap gesture is failure.
+    fileprivate var isStartedInteractiveTransitioning: Bool = false
     /// 交互手势
     fileprivate var panGestureRecognizer: UIPanGestureRecognizer?
     
@@ -145,7 +148,7 @@ private class ModalTransitioningDelegate: NSObject, UIViewControllerTransitionin
     }
     
     func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        if configuration.isEnableInteractiveTransitioning {
+        if configuration.isEnableInteractiveTransitioning && configuration.isStartedInteractiveTransitioning {
             return ModalPercentDrivenInteractiveTransition(configuration: configuration)
         }
         return nil
@@ -445,11 +448,13 @@ private class ModalPresentationController: UIPresentationController {
         switch sender.state {
         case .began:
             isInteractiving = true
+            configuration.isStartedInteractiveTransitioning = true
             presentedViewController.dismiss(animated: true, completion: nil)
         case .changed:
             break
         default:
             isInteractiving = false
+            configuration.isStartedInteractiveTransitioning = false
         }
     }
     

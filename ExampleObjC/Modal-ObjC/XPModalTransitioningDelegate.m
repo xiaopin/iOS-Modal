@@ -40,7 +40,7 @@
 }
 
 - (id<UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id<UIViewControllerAnimatedTransitioning>)animator {
-    if (_configuration.enableInteractiveTransitioning) {
+    if (_configuration.enableInteractiveTransitioning & _configuration.isStartedInteractiveTransitioning) {
         return [XPModalPercentDrivenInteractiveTransition interactiveTransitionWithConfiguration:_configuration];
     }
     return nil;
