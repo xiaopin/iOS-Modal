@@ -22,6 +22,7 @@
  @param completion      模态窗口显示完毕时的回调
  */
 - (void)presentModalWithViewController:(UIViewController *)viewController contentSize:(CGSize)contentSize configuration:(XPModalConfiguration *)configuration completion:(ModalCompletionHandler)completion {
+    NSAssert(configuration != nil, @"configuration cann't be nil.");
     if (self.presentedViewController) { return; }
     viewController.modalPresentationStyle = UIModalPresentationCustom;
     viewController.preferredContentSize = contentSize;
