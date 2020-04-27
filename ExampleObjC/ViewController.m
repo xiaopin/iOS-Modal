@@ -28,39 +28,38 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    XPModalConfiguration *configuration = [XPModalConfiguration defaultConfiguration];
-    CGSize contentSize;
-    switch (indexPath.row) {
-        case 0:
-            configuration.direction = XPModalDirectionTop;
-            contentSize = CGSizeMake(CGFLOAT_MAX, 300.0);
-            break;
-        case 1:
-            configuration.direction = XPModalDirectionRight;
-            contentSize = CGSizeMake(200.0, CGFLOAT_MAX);
-            break;
-        case 2:
-            configuration.direction = XPModalDirectionBottom;
-            configuration.enableInteractiveTransitioning = NO;
-            configuration.enableBackgroundAnimation = YES;
-            configuration.backgroundColor = [UIColor purpleColor];
-            contentSize = CGSizeMake(CGFLOAT_MAX, 300.0);
-            break;
-        case 3:
-            configuration.direction = XPModalDirectionLeft;
-            contentSize = CGSizeMake(200.0, [UIScreen mainScreen].bounds.size.height);
-            break;
-        case 4:
-            configuration.direction = XPModalDirectionCenter;
-            contentSize = CGSizeMake(200.0, 300.0);
-            break;
-        default: return;
-    }
-    
+
     UIViewController *vc = [[UIViewController alloc] init];
     vc.view.backgroundColor = [UIColor brownColor];
-    [self presentModalWithViewController:vc contentSize:contentSize configuration:configuration completion:nil];
+    [self presentModalWithController:vc configBlock:^(XPModalConfiguration * _Nonnull configuration) {
+        switch (indexPath.row) {
+            case 0:
+                configuration.direction = XPModalDirectionTop;
+                configuration.contentSize = CGSizeMake(CGFLOAT_MAX, 300.0);
+                break;
+            case 1:
+                configuration.direction = XPModalDirectionRight;
+                configuration.contentSize = CGSizeMake(200.0, CGFLOAT_MAX);
+                break;
+            case 2:
+                configuration.direction = XPModalDirectionBottom;
+                configuration.enableInteractiveTransitioning = NO;
+                configuration.enableBackgroundAnimation = YES;
+                configuration.backgroundColor = [UIColor purpleColor];
+                configuration.contentSize = CGSizeMake(CGFLOAT_MAX, 300.0);
+                break;
+            case 3:
+                configuration.direction = XPModalDirectionLeft;
+                configuration.contentSize = CGSizeMake(200.0, [UIScreen mainScreen].bounds.size.height);
+                break;
+            case 4:
+                configuration.direction = XPModalDirectionCenter;
+                configuration.contentSize = CGSizeMake(200.0, 300.0);
+                break;
+            default: return;
+        }
+    } completion:nil];
+    
 }
 
 

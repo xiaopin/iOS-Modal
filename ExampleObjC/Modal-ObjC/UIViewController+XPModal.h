@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "XPModalConfiguration.h"
-
+/** 配置的Block */
+typedef void (^ModalConfigBlock)(XPModalConfiguration * _Nonnull configuration);
 
 typedef void(^ModalCompletionHandler)(void);
 
@@ -17,22 +18,18 @@ typedef void(^ModalCompletionHandler)(void);
 
 /**
  显示一个模态视图控制器
-
- @param viewController  模态视图控制器
- @param contentSize     模态窗口大小(内部会限制宽高最大值为屏幕的宽高)
- @param configuration   模态窗口的配置信息
+ @param configBlock     模态窗口的配置信息
+ @param controller      模态视图控制器
  @param completion      模态窗口显示完毕时的回调
  */
-- (void)presentModalWithViewController:(UIViewController *)viewController contentSize:(CGSize)contentSize configuration:(XPModalConfiguration *)configuration completion:(ModalCompletionHandler)completion NS_AVAILABLE_IOS(8_0);
-
+- (void)presentModalWithController:(UIViewController *_Nonnull)controller
+                       configBlock:(ModalConfigBlock _Nullable )configBlock  completion:(ModalCompletionHandler _Nullable)completion NS_AVAILABLE_IOS(8_0);
 /**
- 显示一个模态视图
- 
- @param view            模态视图控制器
- @param contentSize     模态窗口大小(内部会限制宽高最大值为屏幕的宽高)
- @param configuration   模态窗口的配置信息
- @param completion      模态窗口显示完毕时的回调
+ 显示一个模态视图控制器
+ @param view             模态视图控制器
+ @param configBlock      模态窗口的配置信息
+ @param completion       模态窗口显示完毕时的回调
  */
-- (void)presentModalWithView:(UIView *)view contentSize:(CGSize)contentSize configuration:(XPModalConfiguration *)configuration completion:(ModalCompletionHandler)completion NS_AVAILABLE_IOS(8_0);
+- (void)presentModalWithView:(UIView *_Nonnull)view configBlock:(ModalConfigBlock _Nullable )configBlock completion:(ModalCompletionHandler _Nullable)completion NS_AVAILABLE_IOS(8_0);
 
 @end
