@@ -24,7 +24,7 @@ typedef NS_ENUM(NSInteger, XPModalDirection) {
 @property (nonatomic, assign) XPModalDirection direction;
 /// 模态窗口大小(内部会限制宽高最大值为屏幕的宽高)
 @property (nonatomic, assign) CGSize contentSize;
-/// 动画时长, 默认`0.2s`
+/// 动画时长, 默认`0.5s`
 @property (nonatomic, assign) NSTimeInterval animationDuration;
 /// 点击模态窗口之外的区域是否关闭模态窗口
 @property (nonatomic, assign, getter=isAutoDismissModal) BOOL autoDismissModal;
