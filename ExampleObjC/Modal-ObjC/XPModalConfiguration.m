@@ -17,11 +17,11 @@
 - (instancetype)init {
     if (self = [super init]) {
         _direction = XPModalDirectionBottom;
-        _animationDuration = 0.3;
+        _animationDuration = 0.5;
         _autoDismissModal = YES;
         _backgroundOpacity = 0.3;
         
-        _enableShadow = NO;
+        _enableShadow = YES;
         _shadowColor = [UIColor blackColor];
         _shadowWidth = 3.0;
         _shadowOpacity = 0.8;
