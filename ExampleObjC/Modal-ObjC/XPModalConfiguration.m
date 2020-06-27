@@ -17,6 +17,7 @@
 - (instancetype)init {
     if (self = [super init]) {
         _direction = XPModalDirectionBottom;
+        _contentSize= CGSizeMake(CGFLOAT_MAX, 200);
         _animationDuration = 0.5;
         _autoDismissModal = YES;
         _backgroundOpacity = 0.3;
