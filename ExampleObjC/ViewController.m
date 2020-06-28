@@ -31,7 +31,7 @@
 
     UIViewController *vc = [[UIViewController alloc] init];
     vc.view.backgroundColor = [UIColor brownColor];
-    [self presentModalWithController:vc configBlock:^(XPModalConfiguration * _Nonnull configuration) {
+    [self presentModalWithViewController:vc configBlock:^(XPModalConfiguration * _Nonnull configuration) {
         switch (indexPath.row) {
             case 0:
                 configuration.direction = XPModalDirectionTop;
